@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Hr Dashboard Ver 2 — Example School</title>
+<link rel="stylesheet" href="css/app.css">
+</head>
+<body>
+
+<header class="top">
+  <div>
+    <h1>Hr Dashboard Ver 2</h1>
+    <div class="sub" id="sub">Example School · loading…</div>
+  </div>
+  <button class="tbtn" id="theme">Theme</button>
+</header>
+
+<nav class="tabs" id="tabs">
+  <button class="on" data-pane="p-overview">Overview</button>
+  <button data-pane="p-roster">Workforce</button>
+  <button data-pane="p-attendance">Attendance</button>
+</nav>
+
+<main class="wrap">
+
+  <section class="pane on" id="p-overview">
+    <div class="card">
+      <h3>Population</h3>
+      <p class="d" id="scope-help">
+        These five views count different things. Pick the one that matches the question
+        you are asking — the description updates as you choose.
+      </p>
+      <div class="fbar">
+        <label>Showing<select id="scope"></select></label>
+      </div>
+      <div class="scope-note" id="scope-note"></div>
+    </div>
+
+    <div id="cards" class="cgrid"></div>
+    <div id="people"></div>
+  </section>
+
+  <section class="pane" id="p-roster">
+    <div class="card">
+      <h3>Full employee roster</h3>
+      <p class="d">
+        One <b>standing</b> column in place of the old status and flag pair. Every record
+        falls into exactly one category; the meanings are listed under the table.
+      </p>
+      <div class="fbar">
+        <label class="grow">Search<input type="search" id="r-q" placeholder="Name, code, department, designation…"></label>
+        <label>Standing<select id="r-standing"></select></label>
+        <label>Department<select id="r-dept"></select></label>
+        <label>Staff type<select id="r-type"></select></label>
+        <button class="tbtn" id="r-reset">Reset</button>
+      </div>
+      <div id="roster"></div>
+      <div id="standing-key" class="scope-note"></div>
+    </div>
+  </section>
+
+  <section class="pane" id="p-attendance">
+    <div class="card">
+      <h3>Period</h3>
+      <p class="d">
+        Every figure and chart below follows this range. Attendance is measured against
+        school-open days, so term breaks and the summer gap never read as absence.
+      </p>
+      <div class="fbar">
+        <label>From<input type="date" id="a-from"></label>
+        <label>To<input type="date" id="a-to"></label>
+        <label>Department<select id="a-dept"></select></label>
+        <label>Staff type<select id="a-type"></select></label>
+        <button class="tbtn" id="a-reset">Whole year</button>
+      </div>
+      <div class="scope-note" id="a-note"></div>
+    </div>
+
+    <div class="kpis" id="a-kpis"></div>
+
+    <div class="grid2">
+      <div class="card"><h3>Average staff on site by day of week</h3><div id="a-dow"></div></div>
+      <div class="card"><h3>Daily punch volume</h3><div id="a-volume"></div></div>
+    </div>
+
+    <div class="card">
+      <h3>By department</h3>
+      <div id="a-bydept"></div>
+    </div>
+
+    <div class="card">
+      <h3>Employee attendance and punctuality</h3>
+      <p class="d">Click a row for that person's month-by-month breakdown.</p>
+      <div id="a-byemp"></div>
+      <div id="a-months"></div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <span>Hr Dashboard Ver 2 · reads HR_STAGING through hrv2 stored procedures</span>
+  <span id="foot-note">Read-only — this application never writes to the database</span>
+</footer>
+
+<script type="module" src="js/app.js"></script>
+</body>
+</html>
